@@ -1,0 +1,133 @@
+/* Propiedades del navbar */
+.navbar {
+    width: 100%;
+    position: sticky;
+    top: 0;
+    background-color: var(--background-color-white);
+    display: flex;
+    flex-wrap: wrap;
+    box-shadow: 0 0 5px #000;
+    padding: 0.5%;
+    box-sizing: border-box;
+    justify-content: space-between;
+    align-content: center;
+    flex-direction: row;
+    border: solid 1px #000;
+}
+
+/* Propiedades del contenedor de la img */
+.navbar__figure {
+    flex-wrap: wrap;
+    display: flex;
+    width: 10em;
+    box-sizing: border-box;
+    border: #000 solid 1px;
+    margin-left: 4%;
+}
+.navbar__figure--bars{
+    width: 3em;
+
+}
+.navbar__figure__img--bars{
+    width: 100%;
+}
+/* Propiedades del img */
+.navbar__figure__img {
+    width: 100%;
+    flex: 1 1;
+    border: solid 1px #eb0808;
+}
+
+/* Propiedades del navbar ul */
+.navbar__menu {
+    border: solid 1px #eb9393;
+    display: flex;
+    gap: 4em;
+    align-items: center;
+    margin-right: 4%;
+}
+
+.navbar__menu__item {
+    list-style: none;
+    font-family: 'roboto-bold';
+    font-weight: 700;
+}
+
+.navbar__link {
+    text-decoration: none;
+    color: #000;
+}
+
+.navbar__link:focus,
+.navbar__link:hover {
+    color: var(--color-green);
+}
+
+.navbar__button--new {
+    display: flex;
+    justify-content: space-between;
+    box-sizing: border-box;
+    align-items: center;
+}
+
+.navbar__button--plus {
+    font-size: 20px;
+}
+
+.navbar__button {
+    margin-right: 2em;
+    padding: 0.5em 1em;
+    background-color: var(--background-color-green);
+    border: none;
+    font-family: "roboto-bold";
+    flex: 1 1;
+    width: 6em;
+    font-size: 15px;
+    border-radius: 10%;
+    box-shadow: 0 0.5px 2px #000;
+    transition: transform 0.2s
+}
+
+.navbar__button:hover {
+    scale: 1.05;
+}
+
+.navbar__button:active {
+    scale: 0.95;
+}
+
+/* Estilos para el menú hamburguesa */
+.burgermenu {
+    display: none;
+}
+
+.burgermenu--dropdown {
+    display: none;
+    cursor: pointer;
+}
+
+@media (max-width: 768px) {
+    .navbar__menu {
+        display: none;
+        flex-direction: column;
+        width: 100%;
+        position: absolute;
+        top: 100%;
+       
+        background-color: var(--background-color-white);
+        border-top: solid 1px #000;
+    }
+
+    .navbar__menu__item {
+        margin: .5em 0;
+    }
+
+    .burgermenu--dropdown {
+        display: block;
+        margin-right: 4%;
+    }
+
+    #checkboxbar:checked ~ .navbar__menu {
+        display: flex;
+    }
+}

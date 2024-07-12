@@ -1,32 +1,53 @@
-import React from 'react'
-import LogoGlobant from '../../assets/LogoGlobant.png'
+import React, { useState } from 'react';
+import LogoGlobant from '../../assets/LogoGlobant.png';
+import './navbar.css';
+import { Link } from 'react-router-dom';
+import { Form } from '../Form/Form';
+import bars from '../../assets/bars.svg';
 
 const Navbar = () => {
-  return (
-    <>
-    <nav>
-        <figure>
-            <img src={LogoGlobant} alt="" />
-        </figure>
-        <menu>
-            <ul>
-                <li>
-                    <button>OverView</button>
-                </li>
-                <li>
-                    <button>Favorites</button>
-                </li>
-                <li>
-                    <button>Contact</button>
-                </li>
-                <li>
-                    <button>New</button>
-                </li>
-            </ul>
-        </menu>
-    </nav>    
-    </>
-  )
+    const [showForm, setShowForm] = useState(false);
+
+    const clickOnButtonForm = () => {
+        setShowForm(!showForm);
+    };
+
+    return (
+        <>
+            <nav className="navbar">
+                <figure className="navbar__figure">
+                    <Link to='/' className="navbar__link">
+                        <img src={LogoGlobant} className="navbar__figure__img" />
+                    </Link>
+                </figure>
+                <input type="checkbox" id='checkboxbar' className='burgermenu' />
+                <label htmlFor="checkboxbar" className='burgermenu burgermenu--dropdown' role='button'>
+                    <figure className="navbar__figure navbar__figure--bars">
+                        <img src={bars} alt="dropdown menu"  className='navbar__figure__img navbar__figure__img--bars'/>
+                    </figure>
+                </label>
+                <ul className='navbar__menu'>
+                    <li className='navbar__menu__item'>
+                        <Link to='/' className="navbar__link">Overview</Link>
+                    </li>
+                    <li className='navbar__menu__item'>
+                        <Link to='/contacts' className="navbar__link">Contacts</Link>
+                    </li>
+                    <li className='navbar__menu__item'>
+                        <Link to='/favorites' className="navbar__link">Favorites</Link>
+                    </li>
+                    <li className='navbar__menu__item'>
+                        <button className='navbar__button' onClick={clickOnButtonForm}>
+                            <article className='navbar__button--new'>
+                                <span className='navbar__button--plus'>+</span><span>NEW</span>
+                            </article>
+                        </button>
+                    </li>
+                </ul>
+            </nav>
+            {showForm && <Form />}
+        </>
+    );
 }
 
-export default Navbar
+export default Navbar;
