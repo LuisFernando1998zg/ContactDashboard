@@ -5,10 +5,13 @@ import { BrowserRouter, Outlet, Route, Routes } from 'react-router-dom'
 import Navbar from './components/Navbar/Navbar'
 import Contacts from './pages/Contact/Contacts'
 import { Favorites } from './pages/Favorites/Favorites'
+import { ContactsProvider } from './contexts/ContactsContext'
 
 const App = () => {
+  
   return (
     <>
+    <ContactsProvider>
       <BrowserRouter>
         <Navbar />
         <Outlet />
@@ -18,6 +21,8 @@ const App = () => {
           <Route path='/favorites' element={<Favorites />} /> 
         </Routes>
       </BrowserRouter>
+    </ContactsProvider>
+      
 
     </>
   )

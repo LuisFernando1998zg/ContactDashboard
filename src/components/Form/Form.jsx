@@ -1,69 +1,135 @@
-import React from 'react';
+import React, { useState } from 'react';
 import './Form.css';
-import { useForm } from 'react-hook-form';
+import useInputsStates from '../../hooks/useInputsStates';
+import { useContacts } from '../../contexts/ContactsContext';
+import defaultAvatar from '../../assets/avatar.jpg'; // Asegúrate de que la ruta sea correcta
+
+// Función de validación para el email
+const validateEmail = (value) => {
+  const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+  return emailRegex.test(value);
+};
 
 export const Form = () => {
-  const { register, handleSubmit, reset, formState: { errors } } = useForm();
-  
-  const submitValues = (data) => {
-    console.log(data);
-    reset();
+  const { addNewContact } = useContacts();
+
+  const [isFavorite, setIsFavorite] = useState(false);
+  const {
+    value: firstnameValue,
+    haveErrors: firstnameHaveErrors,
+    isValid: firstnameIsValid,
+    onChangeInputs: firstnameOnChangeInputs,
+    blurHandlerInputs: firstnameBlurHandlerInputs,
+    clearInputs: firstnameClearInputs
+  } = useInputsStates((str) => str.trim() !== '');
+
+  const {
+    value: lastnameValue,
+    haveErrors: lastnameHaveErrors,
+    isValid: lastnameIsValid,
+    onChangeInputs: lastnameOnChangeInputs,
+    blurHandlerInputs: lastnameBlurHandlerInputs,
+    clearInputs: lastnameClearInputs
+  } = useInputsStates((str) => str.trim() !== '');
+
+  const {
+    value: emailValue,
+    haveErrors: emailHaveErrors,
+    isValid: emailIsValid,
+    onChangeInputs: emailOnChangeInputs,
+    blurHandlerInputs: emailBlurHandlerInputs,
+    clearInputs: emailClearInputs
+  } = useInputsStates(validateEmail);
+
+  const handleCheckboxChange = (event) => {
+    setIsFavorite(event.target.checked);
   };
 
+  const handleSubmit = async (event) => {
+    event.preventDefault();
+
+    if (formIsValid) {
+      const newContact = {
+        first_name: firstnameValue,
+        last_name: lastnameValue,
+        email: emailValue,
+        isFavorite: isFavorite, // Cambiado a isFavorite
+        avatar: defaultAvatar // Asigna la imagen por defecto
+      };
+      addNewContact(newContact);
+
+      firstnameClearInputs();
+      lastnameClearInputs();
+      emailClearInputs();
+      setIsFavorite(false);
+    }
+  };
+
+  const formIsValid = firstnameIsValid && lastnameIsValid && emailIsValid;
+
   return (
-    <form aria-label="form to add a new contact" className="form" onSubmit={handleSubmit(submitValues)} noValidate>
+    <form aria-label="form to add a new contact" className="form" onSubmit={handleSubmit} noValidate>
       <div className='form__segment'>
-        <input type="text" placeholder="First Name" id="firstname" className={`form__input ${errors.firtsname ? 'error' : ''}`}
-          {...register("firtsname", {
-            required: {
-              value: true,
-              message: "First Name is Required",
-            },
-          })} />
-        {errors.firtsname && (
-          <span className='errorMsg'>{errors.firtsname.message}</span>
+        <input 
+          type="text" 
+          placeholder="First Name"
+          className={`form__input ${firstnameHaveErrors ? 'error' : ''}`}
+          value={firstnameValue}
+          onChange={firstnameOnChangeInputs}
+          onBlur={firstnameBlurHandlerInputs}
+        />
+        {firstnameHaveErrors && (
+          <span className='errorMsg'>First name is required</span>
         )}
       </div>
 
       <div className='form__segment'>
-        <input type="text" placeholder="Last Name" id="lastname" className={`form__input ${errors.lastname ? 'error' : ''}`}
-          {...register("lastname", {
-            required: {
-              value: true,
-              message: "Last Name Is Required",
-            },
-          })} />
-        {errors.lastname && (
-          <span className='errorMsg'>{errors.lastname.message}</span>
+        <input 
+          type="text" 
+          placeholder="Last Name" 
+          className={`form__input ${lastnameHaveErrors ? 'error' : ''}`}
+          value={lastnameValue}
+          onChange={lastnameOnChangeInputs}
+          onBlur={lastnameBlurHandlerInputs}
+        />
+        {lastnameHaveErrors && (
+          <span className='errorMsg'>Last name is required</span>
         )}
       </div>
 
       <div className='form__segment'>
-        <input type="email" placeholder="Email" id="email" className={`form__input ${errors.email ? 'error' : ''}`}
-          {...register("email", {
-            required: {
-              value: true,
-              message: "Email is required",
-            },
-            pattern: {
-              value: /^[^\s@]+@[^\s@]+\.[^\s@]+$/,
-              message: 'Email is not valid',
-            },
-          })} />
-        {errors.email && (
-          <span className='errorMsg'>{errors.email.message}</span>
+        <input 
+          type="email" 
+          placeholder="Email"
+          className={`form__input ${emailHaveErrors ? 'error' : ''}`}
+          value={emailValue}
+          onChange={emailOnChangeInputs}
+          onBlur={emailBlurHandlerInputs}
+        />
+        {emailHaveErrors && (
+          <span className='errorMsg'>Email is required</span>
         )}
       </div>
 
       <div className='form__segment'>
-        <label htmlFor="checkbox option" className="form__label ">
+        <label htmlFor="checkbox_option" className="form__label">
           <span>Enable like Favorites</span>
-          <input type="checkbox" id="checkbox option"
-            {...register("favoritesChekbox")}
+          <input 
+            type="checkbox" 
+            id="checkbox_option"
+            checked={isFavorite}
+            onChange={handleCheckboxChange}
           />
         </label>
       </div>
-      <button type="submit" className="form__button">SAVE</button>
+      <button
+        className={`form__button ${!formIsValid ? 'disable' : ''}`}
+        disabled={!formIsValid}
+      >
+        SAVE
+      </button>
     </form>
   );
 };
+
+export default Form;

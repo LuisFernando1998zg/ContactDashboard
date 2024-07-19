@@ -85,7 +85,7 @@
     font-size: 15px;
     border-radius: 10%;
     box-shadow: 0 0.5px 2px #000;
-    transition: transform 0.2s
+    transition: transform 0.2s;
 }
 
 .navbar__button:hover {
@@ -129,5 +129,8 @@
 
     #checkboxbar:checked ~ .navbar__menu {
         display: flex;
+    }
+    .navbar__button:active ~ .navbar__menu{
+        display: none;
     }
 }

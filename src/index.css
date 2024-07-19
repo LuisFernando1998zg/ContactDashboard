@@ -4,6 +4,11 @@
   font-weight: 400;
 }
 @font-face {
+  font-family: "roboto-medium";
+  src: url("Roboto/Roboto-Medium.ttf") format("truetype");
+  font-weight: 500;
+}
+@font-face {
   font-family: "roboto-bold";
   src: url("Roboto/Roboto-Bold.ttf") format("truetype");
   font-weight: 700;

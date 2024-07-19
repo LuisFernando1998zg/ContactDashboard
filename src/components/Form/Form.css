@@ -8,7 +8,7 @@
     
 }
 .form{
-    width: 30%;
+    width: 35%;
     
     padding: 2.5em 6em;
     flex-wrap: wrap;
@@ -81,3 +81,18 @@ input[type="checkbox"]{
     box-shadow: 0 2px 4px rgba(9, 0, 0, 0.2);
 }
 
+@media (max-width: 600px) {
+    .form {
+      width: 40%;
+    }
+  } 
+ @media (max-width: 768px){
+    .form{
+        width: 90%;}
+
+}
+@media (max-width: 978px){
+    .form{
+        width: 90%;}
+
+}

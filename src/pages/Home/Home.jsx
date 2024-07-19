@@ -1,30 +1,45 @@
-import React from 'react'
-import Navbar from '../../components/Navbar/Navbar'
-import { Form } from '../../components/Form/Form'
+import React from 'react';
+import Card from '../../components/Cards/Card';
+import Section from '../../components/Sections/Section';
+import { useContacts } from '../../contexts/ContactsContext';
 
 const Home = () => {
+    const { data } = useContacts();
+    const favoriteContacts = data.filter(contact => contact.isFavorite).slice(0, 4);
+    const regularContacts = data.filter(contact => !contact.isFavorite).slice(0, 6);
 
-  const getUser = ()=>{
-    fetch('https://reqres.in/api/users')
-    .then((response)=> console.log(response))
-    .catch((response)=>console.log('error', response))
-  }
-  return (
-    <>
-    
-    Home
+    return (
+        <main>
+            <Section title="Favorites">
+                {favoriteContacts.map((contact) => (
+                    <Card
+                        key={contact.id}
+                        id={contact.id}
+                        img={contact.avatar}
+                        first_name={contact.first_name}
+                        last_name={contact.last_name}
+                        email={contact.email}
+                        isfavorite={contact.isFavorite}
+                        page="overview"
+                    />
+                ))}
+            </Section>
+            <Section title="Contacts">
+                {regularContacts.map((contact) => (
+                    <Card
+                        key={contact.id}
+                        id={contact.id}
+                        img={contact.avatar}
+                        first_name={contact.first_name}
+                        last_name={contact.last_name}
+                        email={contact.email}
+                        isfavorite={contact.isFavorite}
+                        page="overview"
+                    />
+                ))}
+            </Section>
+        </main>
+    );
+};
 
-    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Facilis quisquam praesentium cumque laudantium ut voluptas accusamus maxime corporis, eveniet sed porro vel saepe natus quis beatae dolores distinctio impedit vero!</p>
-    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Facilis quisquam praesentium cumque laudantium ut voluptas accusamus maxime corporis, eveniet sed porro vel saepe natus quis beatae dolores distinctio impedit vero!</p>
-    
-    <var><p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Facilis quisquam praesentium cumque laudantium ut voluptas accusamus maxime corporis, eveniet sed porro vel saepe natus quis beatae dolores distinctio impedit vero!</p>
-    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Facilis quisquam praesentium cumque laudantium ut voluptas accusamus maxime corporis, eveniet sed porro vel saepe natus quis beatae dolores distinctio impedit vero!</p>
-    </var>
-
-    <button onClick={getUser}>GetUser</button>
-    
-    </>
-  )
-}
-
-export default Home
+export default Home;
