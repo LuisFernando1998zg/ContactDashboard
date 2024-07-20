@@ -30,7 +30,6 @@
     color: var(--color-pink);
 }
 .button--remove {
-    margin-right: 2em;
     padding: 0.5em 1em;
     font-family: "roboto-bold";
     flex: 1 1;

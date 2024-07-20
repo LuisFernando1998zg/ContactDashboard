@@ -1,4 +1,4 @@
-/* Propiedades del navbar */
+
 .navbar {
     width: 100%;
     position: sticky;
@@ -12,16 +12,14 @@
     justify-content: space-between;
     align-content: center;
     flex-direction: row;
-    border: solid 1px #000;
+    z-index: 2;
 }
 
-/* Propiedades del contenedor de la img */
 .navbar__figure {
     flex-wrap: wrap;
     display: flex;
     width: 10em;
     box-sizing: border-box;
-    border: #000 solid 1px;
     margin-left: 4%;
 }
 .navbar__figure--bars{
@@ -31,16 +29,12 @@
 .navbar__figure__img--bars{
     width: 100%;
 }
-/* Propiedades del img */
+
 .navbar__figure__img {
     width: 100%;
     flex: 1 1;
-    border: solid 1px #eb0808;
 }
-
-/* Propiedades del navbar ul */
 .navbar__menu {
-    border: solid 1px #eb9393;
     display: flex;
     gap: 4em;
     align-items: center;
@@ -96,7 +90,6 @@
     scale: 0.95;
 }
 
-/* Estilos para el menú hamburguesa */
 .burgermenu {
     display: none;
 }

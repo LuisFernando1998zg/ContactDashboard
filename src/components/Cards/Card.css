@@ -1,37 +1,60 @@
 .card {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 16px;
-  }
+  box-sizing: border-box;
+  border-radius: 8px;
+  padding: 16px;
+  width: 90%;
+  max-width: 300px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1), 
+              2px 0 4px rgba(0, 0, 0, 0.1), 
+              -2px 0 4px rgba(0, 0, 0, 0.1);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  transition: transform 0.2s;
+}
+
+.card:hover {
+  transform: scale(1.05);
+}
+
+.card__info {
+  box-sizing: border-box;
+  text-align: center;
+  border-bottom: solid 0.1px var(--background-color-black-light);
+  padding-bottom: 6%;
+  width: 100%;
+}
+
+.card__info__fullname {
+  font-family: 'roboto-bold';
+  font-weight: 700;
+}
+
+.card__info img {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 3px solid transparent;
+}
+
+.card__info img.favorite {
+  border-color: var(--background-color-green);
+}
+
+.card__Contact__actions {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 16px;
+  width: 100%; 
+}
+.card__Contact__actions.contacts {
+  justify-content: space-evenly;
+}
+
+.card__Contact__actions.favorites {
+  justify-content: center; /* Centrar el botón en la página de favoritos */
   
-  .card__content {
-    padding: 16px;
-    border: 1px solid #ccc;
-    border-radius: 8px;
-    background-color: #fff;
-    width: 200px;
-    box-sizing: border-box;
-    text-align: center;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-  }
-  
-  .card--favorite {
-    border-color: green;
-  }
-  
-  .card__info {
-    margin-bottom: 16px;
-  }
-  
-  .card__info img {
-    width: 100%;
-    height: auto;
-    border-radius: 50%;
-  }
-  
-  .card__actions {
-    display: flex;
-    justify-content: space-around;
-  }
+}

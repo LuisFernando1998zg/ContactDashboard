@@ -10,6 +10,7 @@ const useInputsStates = (isValidFn) => {
 
   const clearInputs = () => {
     setValue('');
+    setInputTouched(false);
   };
 
   const blurHandlerInputs = () => {
