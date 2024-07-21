@@ -1,0 +1,9 @@
+.pagination {
+    display: flex;
+    justify-content: end;
+    align-items: center;
+    margin-right: 15%;
+    /* margin-top: 20px;
+    list-style: none;
+    padding: 0; */
+  }

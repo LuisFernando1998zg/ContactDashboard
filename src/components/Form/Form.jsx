@@ -2,9 +2,9 @@ import React, { useState } from 'react';
 import './Form.css';
 import useInputsStates from '../../hooks/useInputsStates';
 import { useContacts } from '../../contexts/ContactsContext';
-import defaultAvatar from '../../assets/avatar.jpg'; // Asegúrate de que la ruta sea correcta
+import defaultAvatar from '../../assets/avatar.jpg'; 
 
-// Función de validación para el email
+
 const validateEmail = (value) => {
   const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
   return emailRegex.test(value);
@@ -53,8 +53,8 @@ export const Form = () => {
         first_name: firstnameValue,
         last_name: lastnameValue,
         email: emailValue,
-        isFavorite: isFavorite, // Cambiado a isFavorite
-        avatar: defaultAvatar // Asigna la imagen por defecto
+        isFavorite: isFavorite, 
+        avatar: defaultAvatar 
       };
       addNewContact(newContact);
 

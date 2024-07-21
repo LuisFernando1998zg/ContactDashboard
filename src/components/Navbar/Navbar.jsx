@@ -14,30 +14,30 @@ const Navbar = () => {
 
     return (
         <>
-            <nav className="navbar">
+            <nav className="navbar" aria-label="Main Navigation">
                 <figure className="navbar__figure">
-                    <Link to='/' className="navbar__link">
-                        <img src={LogoGlobant} className="navbar__figure__img" />
+                    <Link to='/' className="navbar__link" aria-label="Home">
+                        <img src={LogoGlobant} alt="Globant Logo" className="navbar__figure__img" />
                     </Link>
                 </figure>
                 <input type="checkbox" id='checkboxbar' className='burgermenu' />
-                <label htmlFor="checkboxbar" className='burgermenu burgermenu--dropdown' role='button'>
+                <label htmlFor="checkboxbar" className='burgermenu burgermenu--dropdown' role='button' aria-label="Open menu">
                     <figure className="navbar__figure navbar__figure--bars">
-                        <img src={bars} alt="dropdown menu"  className='navbar__figure__img navbar__figure__img--bars'/>
+                        <img src={bars} alt="Dropdown menu" className='navbar__figure__img navbar__figure__img--bars' />
                     </figure>
                 </label>
                 <ul className='navbar__menu'>
                     <li className='navbar__menu__item'>
-                        <Link to='/' className="navbar__link">Overview</Link>
+                        <Link to='/' className="navbar__link" aria-label="Overview">Overview</Link>
                     </li>
                     <li className='navbar__menu__item'>
-                        <Link to='/contacts' className="navbar__link">Contacts</Link>
+                        <Link to='/contacts' className="navbar__link" aria-label="Contacts">Contacts</Link>
                     </li>
                     <li className='navbar__menu__item'>
-                        <Link to='/favorites' className="navbar__link">Favorites</Link>
+                        <Link to='/favorites' className="navbar__link" aria-label="Favorites">Favorites</Link>
                     </li>
                     <li className='navbar__menu__item'>
-                        <button className='navbar__button' onClick={clickOnButtonForm}>
+                        <button className='navbar__button' onClick={clickOnButtonForm} aria-expanded={showForm} aria-controls="form-section" aria-label="Add new contact">
                             <article className='navbar__button--new'>
                                 <span className='navbar__button--plus'>+</span><span>NEW</span>
                             </article>
@@ -45,7 +45,7 @@ const Navbar = () => {
                     </li>
                 </ul>
             </nav>
-            {showForm && <Form />}
+            {showForm && <Form id="form-section" />}
         </>
     );
 }
