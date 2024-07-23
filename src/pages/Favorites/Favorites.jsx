@@ -8,19 +8,20 @@ export const Favorites = () => {
   const { data } = useContacts();
   const favorites = data.filter(contact => contact.isFavorite);
   const [currentPage, setCurrentPage] = useState(1);
-  const itemsPerPage = 12;
+  const itemsPerPage = 8;
 
   const totalPages = Math.ceil(favorites.length / itemsPerPage);
 
   const handlePageChange = (page) => {
-    setCurrentPage(page);
+    if (page > 0 && page <= totalPages) {
+      setCurrentPage(page);
+    }
   };
 
   const currentData = favorites.slice(
     (currentPage - 1) * itemsPerPage,
     currentPage * itemsPerPage
   );
-
   return (
     <main>
       <Section title="Favorites">
@@ -36,8 +37,6 @@ export const Favorites = () => {
             page="favorites"
           />
         ))}
-
-        
       </Section>
       <Pagination
         currentPage={currentPage}

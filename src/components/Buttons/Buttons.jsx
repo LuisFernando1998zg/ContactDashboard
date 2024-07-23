@@ -44,22 +44,17 @@ export const XButton = () => {
   )
 }
 export const PreviousButton = ({ onClick, disabled }) => {
-  return(
-    <>
-    <button className='button'aria-label='This Button use it to back a previous page'onClick={onClick} disabled={disabled}>
-        <img className='button__img' src={previous}alt="previous Button"  />
+  return (
+    <button className='button' aria-label='This Button use it to back a previous page' onClick={onClick} disabled={disabled}>
+      <img className='button__img' src={previous} alt="previous Button" />
     </button>
-    </>
-  )
-}
-export const NextButton = ({ onClick, disabled }) =>{
-  return(
-    <>
-    <button className='button 'aria-label='This Button use it to next page'onClick={onClick} disabled={disabled}> 
-        <img className='button__img' src={next}alt="next Button"  />
-    </button>    
-    </>
-  )
-}
+  );
+};
 
-
+export const NextButton = ({ onClick, disabled }) => {
+  return (
+    <button className='button' aria-label='This Button use it to next page' onClick={onClick} disabled={disabled}>
+      <img className='button__img' src={next} alt="next Button" />
+    </button>
+  );
+};

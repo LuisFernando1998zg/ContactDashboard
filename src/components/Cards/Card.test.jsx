@@ -32,9 +32,9 @@ describe('Card Component', () => {
   const defaultProps = {
     id: '1',
     img: 'https://via.placeholder.com/150',
-    first_name: 'John',
-    last_name: 'Doe',
-    email: 'john.doe@example.com',
+    first_name: 'Luis',
+    last_name: 'Fernando',
+    email: 'Luis.Fernando@gmail.com',
     isfavorite: false,
     page: 'overview',
   };
@@ -42,9 +42,9 @@ describe('Card Component', () => {
   it('renders the card with initial values', () => {
     render(<Card {...defaultProps} />);
 
-    expect(screen.getByText('John Doe')).toBeInTheDocument();
-    expect(screen.getByText('john.doe@example.com')).toBeInTheDocument();
-    expect(screen.getByAltText('John Doe')).toBeInTheDocument();
+    expect(screen.getByText('Luis Fernando')).toBeInTheDocument();
+    expect(screen.getByText('Luis.Fernando@gmail.com')).toBeInTheDocument();
+    expect(screen.getByAltText('Luis Fernando')).toBeInTheDocument();
     expect(screen.getByTestId('favorites-button-1')).toBeInTheDocument();
   });
 

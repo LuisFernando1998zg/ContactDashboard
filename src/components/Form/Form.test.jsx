@@ -36,9 +36,9 @@ describe('Form Component', () => {
     const emailInput = screen.getByPlaceholderText('Email');
     const saveButton = screen.getByRole('button', { name: /save/i });
 
-    fireEvent.change(firstNameInput, { target: { value: 'John' } });
-    fireEvent.change(lastNameInput, { target: { value: 'Doe' } });
-    fireEvent.change(emailInput, { target: { value: 'john.doe@example.com' } });
+    fireEvent.change(firstNameInput, { target: { value: 'Luis' } });
+    fireEvent.change(lastNameInput, { target: { value: 'Fernando' } });
+    fireEvent.change(emailInput, { target: { value: 'Luis.zapata@gmail.com' } });
 
     fireEvent.blur(firstNameInput);
     fireEvent.blur(lastNameInput);
@@ -49,9 +49,9 @@ describe('Form Component', () => {
     fireEvent.click(saveButton);
 
     expect(addNewContactMock).toHaveBeenCalledWith({
-      first_name: 'John',
-      last_name: 'Doe',
-      email: 'john.doe@example.com',
+      first_name: 'Luis',
+      last_name: 'Fernando',
+      email: 'Luis.zapata@gmail.com',
       isFavorite: false,
       avatar: expect.any(String), // defaultAvatar
     });

@@ -7,12 +7,14 @@ import Pagination from '../../components/Pagination/Pagination';
 export const Contacts = () => {
   const { data } = useContacts();
   const [currentPage, setCurrentPage] = useState(1);
-  const itemsPerPage = 12;
+  const itemsPerPage = 8;
 
   const totalPages = Math.ceil(data.length / itemsPerPage);
 
   const handlePageChange = (page) => {
-    setCurrentPage(page);
+    if (page > 0 && page <= totalPages) {
+      setCurrentPage(page);
+    }
   };
 
   const currentData = data.slice(
@@ -35,7 +37,6 @@ export const Contacts = () => {
             page="contacts"
           />
         ))}
-        
       </Section>
       <Pagination
         currentPage={currentPage}

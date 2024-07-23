@@ -1,15 +1,9 @@
 
-
 .main_section{
-    /* margin-top: 4.5em;
-    display: flex; */
-    border: #000000 1px solid;
-    
-    
+    border: #000000 1px solid;  
 }
 .form{
-    width: 35%;
-    
+    width: 35%;    
     padding: 2.5em 6em;
     flex-wrap: wrap;
     margin: auto;
@@ -37,10 +31,6 @@
 .form__input.error{
     border: 2% rgb(247, 14, 14) solid;
 }
-/* .form__input:focus{
-    border: 2px var(--color-black-light) solid;
-    
-} */
 .errorMsg {
     color: var(--color-black);
     font-family: 'roboto-bold';    

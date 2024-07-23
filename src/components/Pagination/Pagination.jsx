@@ -9,7 +9,7 @@ const Pagination = ({ currentPage, totalPages, onPageChange }) => {
       <PreviousButton
         onClick={() => onPageChange(currentPage - 1)}
         disabled={currentPage === 1}
-      />      
+      />
       <NextButton
         onClick={() => onPageChange(currentPage + 1)}
         disabled={currentPage === totalPages}
